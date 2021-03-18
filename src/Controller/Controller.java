@@ -1,72 +1,62 @@
 package Controller;
+
 import Model.Model;
 import view.InputUtility;
 import view.View;
 
 public class Controller {
     private View view = new View();
-    int n=30;
-    private Model model = new Model(n);
-    public void PrintAll()
-    {
+    private Model model = new Model();
+
+    public void printAll() {
         view.printString(view.TableStart);
+        view.PrintAll(model.getCopy(), model.getSize());
 
-        for (int i = 0; i < n; i++) {
-            view.printString(model.To_String(i));
 
-        }
     }
-    public void PrintwithRoute(int route)
-    {
+
+    public void printwithRoute(int route) {
         view.printString(view.TableStart);
+        view.PrintwithRoute(model.getCopy(), model.getSize(), route);
 
-        for (int i = 0; i < n; i++) {
-            if(model.AutobusPark[i].GetRoute()==route)
-            view.printString(model.To_String(i));
-
-        }
     }
-    public void PrintwithYear(int time)
-    {
+
+    public void printwithYear(int time) {
         view.printString(view.TableStart);
+        view.PrintwithYear(model.getCopy(), model.getSize(), time);
 
-        for (int i = 0; i < n; i++) {
-            if(2021-model.AutobusPark[i].GetStartYear()>time)
-                view.printString(model.To_String(i));
-
-        }
     }
-    public void PrintwithRun(int run)
-    {
+
+    public void printwithRun(int run) {
         view.printString(view.TableStart);
+        view.PrintwithRun(model.getCopy(), model.getSize(), run);
 
-        for (int i = 0; i < n; i++) {
-            if(model.AutobusPark[i].GetRun()>run)
-                view.printString(model.To_String(i));
 
-        }
     }
-   public  void calculate() {
-        int ex=0;
-        while(ex!=1) {
-            int x = InputUtility.InputInt(view);
+
+    public void calculate() {
+        boolean ex = false;
+        while (!ex) {
+            int x = InputUtility.inputInt(view);
             int y;
             switch (x) {
                 case 0:
-                    ex = 1;
+                    ex = true;
                     break;
                 case 1:
-                    PrintAll();
+                    printAll();
                     break;
                 case 2:
-                     y = InputUtility.InputRoute(view);
-                    PrintwithRoute(y);
+                    y = InputUtility.inputRoute(view);
+                    printwithRoute(y);
                     break;
-                case 3: y = InputUtility.InputTime(view);
-                PrintwithYear(y);
+                case 3:
+                    y = InputUtility.inputTime(view);
+                    printwithYear(y);
                     break;
-                case 4: y= InputUtility.InputRun(view);
-                PrintwithRun(y);
+                case 4:
+                    y = InputUtility.inputRun(view);
+                    printwithRun(y);
                     break;
             }
         }

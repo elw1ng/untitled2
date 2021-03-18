@@ -1,9 +1,11 @@
 package view;
+
 import java.util.Scanner;
+
 import view.View;
+
 public class InputUtility {
-    public static int InputInt(View view)
-    {
+    public static int inputInt(View view) {
         int X;
         Scanner scanner = new Scanner(System.in);
         view.printString(view.InputRequest);
@@ -16,7 +18,7 @@ public class InputUtility {
 
             }
 
-             X = scanner.nextInt();
+            X = scanner.nextInt();
             if (X < 0 || X > 4) {
                 view.printString(view.WrongInput + view.InputRequest);
             }
@@ -24,31 +26,29 @@ public class InputUtility {
         return X;
 
     }
-    public static int InputRoute(View view)
-    {
+
+    public static int inputRoute(View view) {
 
         Scanner scanner = new Scanner(System.in);
         view.printString(view.InputRoute);
 
 
+        while (!scanner.hasNextInt()) {
+            view.printString(view.WrongInput + view.InputRoute);
+            scanner.next();
 
-            while (!scanner.hasNextInt()) {
-                view.printString(view.WrongInput + view.InputRoute);
-                scanner.next();
+        }
 
-            }
-
-           int X = scanner.nextInt();
+        int X = scanner.nextInt();
 
         return X;
 
     }
-    public static int InputTime(View view)
-    {
+
+    public static int inputTime(View view) {
 
         Scanner scanner = new Scanner(System.in);
         view.printString(view.InputTime);
-
 
 
         while (!scanner.hasNextInt()) {
@@ -62,12 +62,11 @@ public class InputUtility {
         return X;
 
     }
-    public static int InputRun(View view)
-    {
+
+    public static int inputRun(View view) {
 
         Scanner scanner = new Scanner(System.in);
         view.printString(view.InputRun);
-
 
 
         while (!scanner.hasNextInt()) {
