@@ -2,82 +2,53 @@ package view;
 
 import java.util.Scanner;
 
-import view.View;
-
 public class InputUtility {
     public static int inputInt(View view) {
-        int X;
+        int x;
         Scanner scanner = new Scanner(System.in);
-        view.printString(view.InputRequest);
+        view.printString(view.inputRequest);
         do {
-
-
             while (!scanner.hasNextInt()) {
-                view.printString(view.WrongInput + view.InputRequest);
+                view.printString(view.wrongInput + view.inputRequest);
                 scanner.next();
-
             }
-
-            X = scanner.nextInt();
-            if (X < 0 || X > 4) {
-                view.printString(view.WrongInput + view.InputRequest);
+            x = scanner.nextInt();
+            if (x < 0 || x > 4) {
+                view.printString(view.wrongInput + view.inputRequest);
             }
-        } while (X < 0 || X > 4);
-        return X;
-
+        } while (x < 0 || x > 4);
+        return x;
     }
 
     public static int inputRoute(View view) {
-
         Scanner scanner = new Scanner(System.in);
-        view.printString(view.InputRoute);
-
-
+        view.printString(view.inputRoute);
         while (!scanner.hasNextInt()) {
-            view.printString(view.WrongInput + view.InputRoute);
+            view.printString(view.wrongInput + view.inputRoute);
             scanner.next();
-
         }
-
-        int X = scanner.nextInt();
-
-        return X;
-
+        return scanner.nextInt();
     }
 
     public static int inputTime(View view) {
-
         Scanner scanner = new Scanner(System.in);
-        view.printString(view.InputTime);
-
-
+        view.printString(view.inputTime);
         while (!scanner.hasNextInt()) {
-            view.printString(view.WrongInput + view.InputTime);
+            view.printString(view.wrongInput + view.inputTime);
             scanner.next();
-
         }
-
-        int X = scanner.nextInt();
-
-        return X;
-
+        return scanner.nextInt();
     }
 
     public static int inputRun(View view) {
-
         Scanner scanner = new Scanner(System.in);
-        view.printString(view.InputRun);
-
-
+        view.printString(view.inputRun);
         while (!scanner.hasNextInt()) {
-            view.printString(view.WrongInput + view.InputRun);
+            view.printString(view.wrongInput + view.inputRun);
             scanner.next();
 
         }
-
         int X = scanner.nextInt();
-
         return X;
-
     }
 }

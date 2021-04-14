@@ -1,63 +1,37 @@
 package Controller;
 
-import Model.Model;
+import Model.Storage;
 import view.InputUtility;
 import view.View;
+import Model.Sorter;
 
 public class Controller {
     private View view = new View();
-    private Model model = new Model();
-
-    public void printAll() {
-        view.printString(view.TableStart);
-        view.PrintAll(model.getCopy(), model.getSize());
+    private Sorter sorter = new Sorter();
 
 
-    }
-
-    public void printwithRoute(int route) {
-        view.printString(view.TableStart);
-        view.PrintwithRoute(model.getCopy(), model.getSize(), route);
-
-    }
-
-    public void printwithYear(int time) {
-        view.printString(view.TableStart);
-        view.PrintwithYear(model.getCopy(), model.getSize(), time);
-
-    }
-
-    public void printwithRun(int run) {
-        view.printString(view.TableStart);
-        view.PrintwithRun(model.getCopy(), model.getSize(), run);
-
-
-    }
 
     public void calculate() {
-        boolean ex = false;
-        while (!ex) {
+        while (true) {
             int x = InputUtility.inputInt(view);
-            int y;
             switch (x) {
                 case 0:
-                    ex = true;
+                    System.exit(1);
                     break;
                 case 1:
-                    printAll();
+                    view.printAll(sorter.getAll());
                     break;
                 case 2:
-                    y = InputUtility.inputRoute(view);
-                    printwithRoute(y);
+                    view.printAll(sorter.getwithRoute(InputUtility.inputRoute(view)));
                     break;
                 case 3:
-                    y = InputUtility.inputTime(view);
-                    printwithYear(y);
+                    view.printAll(sorter.getwithYear(InputUtility.inputTime(view)));
                     break;
                 case 4:
-                    y = InputUtility.inputRun(view);
-                    printwithRun(y);
+                    view.printAll(sorter.getwithRun(InputUtility.inputRun(view)));
                     break;
+                default:
+                    view.printString(View.wrongInput);
             }
         }
 
