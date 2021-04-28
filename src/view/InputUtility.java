@@ -1,26 +1,39 @@
 package view;
 
 import java.util.Scanner;
-
+import Controller.Validator;
+import Controller.NotIntegerInputException;
 public class InputUtility {
     public static int inputInt(View view) {
-        int x;
         Scanner scanner = new Scanner(System.in);
         view.printString(view.inputRequest);
-            while (!scanner.hasNextInt()) {
-                view.printString(view.wrongInput + view.inputRequest);
-                scanner.next();
+            while (true) {
+                try {
+                    Validator.checkForNotInt(scanner, view);
+                    break;
+                } catch (NotIntegerInputException e) {
+                    System.err.println(e.getMessage());
+                    scanner.next();
+                }
+
+
             }
-            x = scanner.nextInt();
-        return x;
+        return scanner.nextInt();
     }
 
     public static int inputRoute(View view) {
         Scanner scanner = new Scanner(System.in);
         view.printString(view.inputRoute);
-        while (!scanner.hasNextInt()) {
-            view.printString(view.wrongInput + view.inputRoute);
-            scanner.next();
+        while (true) {
+            try {
+                Validator.checkForNotInt(scanner, view);
+                break;
+            } catch (NotIntegerInputException e) {
+                System.err.println(e.getMessage());
+                scanner.next();
+            }
+
+
         }
         return scanner.nextInt();
     }
@@ -28,9 +41,16 @@ public class InputUtility {
     public static int inputTime(View view) {
         Scanner scanner = new Scanner(System.in);
         view.printString(view.inputTime);
-        while (!scanner.hasNextInt()) {
-            view.printString(view.wrongInput + view.inputTime);
-            scanner.next();
+        while (true) {
+            try {
+                Validator.checkForNotInt(scanner, view);
+                break;
+            } catch (NotIntegerInputException e) {
+                System.err.println(e.getMessage());
+                scanner.next();
+            }
+
+
         }
         return scanner.nextInt();
     }
@@ -38,12 +58,17 @@ public class InputUtility {
     public static int inputRun(View view) {
         Scanner scanner = new Scanner(System.in);
         view.printString(view.inputRun);
-        while (!scanner.hasNextInt()) {
-            view.printString(view.wrongInput + view.inputRun);
-            scanner.next();
+        while (true) {
+            try {
+                Validator.checkForNotInt(scanner, view);
+                break;
+            } catch (NotIntegerInputException e) {
+                System.err.println(e.getMessage());
+                scanner.next();
+            }
+
 
         }
-        int X = scanner.nextInt();
-        return X;
+        return scanner.nextInt();
     }
 }
