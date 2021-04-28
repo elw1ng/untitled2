@@ -1,8 +1,10 @@
 package Controller;
-
+import Controller.Validator;
+import Controller.InputRangeException;
 import Model.Storage;
-import view.InputUtility;
 import view.View;
+import view.InputUtility;
+
 import Model.Sorter;
 
 public class Controller {
@@ -13,7 +15,18 @@ public class Controller {
 
     public void calculate() {
         while (true) {
-            int x = InputUtility.inputInt(view);
+            int x;
+            while (true) {
+                try {
+                    x = InputUtility.inputInt(view);
+                    Validator.checkForInputRange(x,view);
+                    break;
+                }
+                catch (InputRangeException e)
+                {
+                    System.err.println(e.getMessage());
+                }
+            }
             switch (x) {
                 case 0:
                     System.exit(1);
@@ -30,8 +43,6 @@ public class Controller {
                 case 4:
                     view.printAll(sorter.getwithRun(InputUtility.inputRun(view)));
                     break;
-                default:
-                    view.printString(View.wrongInput);
             }
         }
 

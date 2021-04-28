@@ -7,16 +7,11 @@ public class InputUtility {
         int x;
         Scanner scanner = new Scanner(System.in);
         view.printString(view.inputRequest);
-        do {
             while (!scanner.hasNextInt()) {
                 view.printString(view.wrongInput + view.inputRequest);
                 scanner.next();
             }
             x = scanner.nextInt();
-            if (x < 0 || x > 4) {
-                view.printString(view.wrongInput + view.inputRequest);
-            }
-        } while (x < 0 || x > 4);
         return x;
     }
 
