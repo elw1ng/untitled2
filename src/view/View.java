@@ -1,6 +1,6 @@
 package view;
 
-import Model.Autobus;
+import model.Autobus;
 
 public class View {
 

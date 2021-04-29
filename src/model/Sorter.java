@@ -1,5 +1,4 @@
-package Model;
-import Model.Storage;
+package model;
 
 import java.util.Arrays;
 
